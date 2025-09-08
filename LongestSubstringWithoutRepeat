@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = s.size();
+        int i = 0, j = 0;
+        int maxCount = 0;
+        set<int> Hashset;
+
+        while(j < n){
+            if(Hashset.find(s[j]) == Hashset.end()){
+                Hashset.insert(s[j]);
+                j++;
+            } else {
+                maxCount = max(maxCount, j - i);
+                while(i <= j && s[i] != s[j]){
+                    Hashset.erase(s[i]);
+                    i++;
+                }
+                Hashset.erase(s[i]);
+                i++;
+            }
+        }
+        return max(maxCount, j - i);
+    }
+};

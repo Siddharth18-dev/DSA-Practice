@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int totalMoves = m + n - 2;
+        int RequiredMoveOfOneType = ((m - 1) > (n - 1)) ? n - 1 : m - 1;
+        double res = 1;
+        //calculate nCr
+        for(int i = 1; i <= RequiredMoveOfOneType; i++){
+            res = res * (totalMoves - RequiredMoveOfOneType + i) / i;
+        }
+        return (int)res;
+    }
+};

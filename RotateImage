@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int rowSize = matrix.size();
+        int colSize = matrix[0].size();
+
+        //Transpose of a Matrix;
+        for(int rows = 0; rows < rowSize; rows++){
+            for(int columns = 0; columns <= rows; columns++){
+                swap(matrix[rows][columns], matrix[columns][rows]);
+            }
+        }
+
+        //Swap Corresponding Columns
+        for(int columns = 0; columns < colSize / 2; columns++){
+            for(int rows = 0; rows < rowSize; rows++){
+                swap(matrix[rows][columns], matrix[rows][colSize - 1 - columns]);
+            }
+        }
+    }
+};

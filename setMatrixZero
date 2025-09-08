@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int rowSize = matrix.size();
+        int colSize = matrix[0].size();
+        bool FirstColumnZero = false;
+
+        for(int rows = 0; rows < rowSize; rows++){
+            if(matrix[rows][0] == 0) FirstColumnZero = true;
+            for(int columns = 1; columns < colSize; columns++){
+                if(matrix[rows][columns] == 0){
+                    matrix[rows][0] = 0;
+                    matrix[0][columns] = 0;
+                }
+            }            
+        }
+
+        for(int rows = rowSize - 1; rows >= 0; --rows){
+            for(int columns = colSize - 1; columns >= 1; --columns){
+                if(matrix[rows][0] == 0 || matrix[0][columns] == 0){
+                    matrix[rows][columns] = 0;
+                }
+            }
+            if(FirstColumnZero) matrix[rows][0] = 0;
+        }
+    }
+};
