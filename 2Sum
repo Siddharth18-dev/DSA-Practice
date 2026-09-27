@@ -1,3 +1,6 @@
+#problem Statement: Find Two number in an array, i.e., arr[i] + arr[j] = target.
+
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
